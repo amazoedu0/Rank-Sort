@@ -19,6 +19,9 @@ namespace Rank_Sort
             Print(sizes);
 
             Console.ReadKey();
+            Console.ReadKey();
+            Console.ReadKey();
+            Console.ReadKey();
 
         }
 
@@ -27,6 +30,18 @@ namespace Rank_Sort
         {
             Console.Write(new string('-', 55) + '\n');
             Console.WriteLine("N \tSingle T \tMulti T \tThreadPool");
+
+
+            //int[] arrrr = { 4, 4, 4, 1, 2, 3, 10, 5, 6, 7, 8, 9, 0,0 };
+            //int[] arr;
+            //arr = SerialRankSort(arrrr);
+            //for (int i = 0; i < arr.Length; i++)
+            //{
+            //    Console.Write($"{arr[i]}  ");
+            //}
+            ////Console.ReadKey();
+
+
 
             for (int i = 0; i < sizez.Length; i++)
             {
@@ -88,11 +103,15 @@ namespace Rank_Sort
 
                 B = MergeMT(v, w);
 
+                //foreach (int y in B)
+                //{
+                //    Console.WriteLine(y);
+                //}
+
                 stopwatch.Stop();
+                //Console.ReadKey();
 
                 multiT = stopwatch.Elapsed.TotalMilliseconds;
-
-
 
                 /*
                  * 
@@ -104,6 +123,8 @@ namespace Rank_Sort
                  * 
                  */
 
+                B = A;
+                stopwatch.Reset();
                 stopwatch.Start();
                 ThreadPool.QueueUserWorkItem(Thread_Pool, A);
                 stopwatch.Stop();
@@ -167,6 +188,9 @@ namespace Rank_Sort
         {
             int[] temp;
             temp = new int[A.Length];
+
+            for (int i = 0; i < temp.Length; i++)
+                temp[i] = -1;
 
             for (int i = 0; i < A.Length; i++)
             {
